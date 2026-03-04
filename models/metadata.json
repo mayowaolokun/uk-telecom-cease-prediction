@@ -60,5 +60,23 @@
     "log1p_sum_upload_30d",
     "log1p_avg_talk_time_30d",
     "log1p_avg_hold_time_30d"
-  ]
+  ],
+  "risk_band_policy": {
+    "high_top_pct": 0.05,
+    "medium_top_pct": 0.2
+  },
+  "band_thresholds_from_val": {
+    "q_high": 0.867489410652155,
+    "q_medium": 0.31064582137853425
+  },
+  "business_kpis_val": {
+    "call_list_size": 14850,
+    "precision": 0.44222222222222224,
+    "recall": 0.46846911114281636
+  },
+  "business_kpis_test": {
+    "call_list_size": 13171,
+    "precision": 0.3165287373775719,
+    "recall": 0.4645125348189415
+  }
 }

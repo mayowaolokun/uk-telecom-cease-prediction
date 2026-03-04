@@ -12,6 +12,8 @@ models/*.joblib
 # ---- Common data formats 
 *.parquet
 *.csv
+!reports/
+!reports/call_list_val_top5pct.csv
 
 # ---- Python 
 __pycache__/
