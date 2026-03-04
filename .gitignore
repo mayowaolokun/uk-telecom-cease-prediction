@@ -1,0 +1,28 @@
+# ---- Data 
+data/raw/
+data/interim/
+data/processed/
+
+# ---- Model 
+models/*.pkl
+models/*.joblib
+!models/cease_risk_model.joblib
+!models/metadata.json
+
+# ---- Common data formats 
+*.parquet
+*.csv
+
+# ---- Python 
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# ---- Virtual environments 
+.venv/
+venv/
+
+# ---- OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
