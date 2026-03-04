@@ -91,10 +91,10 @@
       "FTTP"
     ],
     "sales_channel": [
+      "Unknown",
       "Online - Affiliate",
       "Migrated Customer",
       "Inbound",
-      "Unknown",
       "Partners",
       "Online - Search",
       "Retail",
@@ -323,5 +323,65 @@
       "lift": 0.16965703650505173,
       "capture": 0.13671309192200556
     }
-  ]
+  ],
+  "top_call_types_clean": [
+    "Tech",
+    "CS&B",
+    "Loyalty",
+    "Customer Finance",
+    "FTTP"
+  ],
+  "model_features": [
+    "contract_status",
+    "contract_dd_cancels",
+    "dd_cancel_60_day",
+    "ooc_days",
+    "technology",
+    "speed",
+    "line_speed",
+    "sales_channel",
+    "crm_package_name",
+    "tenure_days",
+    "calls_30d",
+    "avg_talk_time_30d",
+    "avg_hold_time_30d",
+    "calls_Tech_30d",
+    "calls_CSandB_30d",
+    "calls_Loyalty_30d",
+    "calls_Customer_Finance_30d",
+    "calls_FTTP_30d",
+    "calls_nan_30d",
+    "avg_download_30d",
+    "avg_upload_30d",
+    "sum_download_30d",
+    "sum_upload_30d",
+    "null_score",
+    "rn",
+    "log1p_sum_download_30d",
+    "log1p_sum_upload_30d",
+    "log1p_avg_talk_time_30d",
+    "log1p_avg_hold_time_30d"
+  ],
+  "ui_features_for_form": [
+    "ooc_days",
+    "contract_dd_cancels",
+    "dd_cancel_60_day",
+    "line_speed",
+    "tenure_days",
+    "speed",
+    "avg_download_30d",
+    "calls_Loyalty_30d",
+    "sum_download_30d",
+    "avg_upload_30d",
+    "sales_channel",
+    "calls_30d"
+  ],
+  "ui_drop_features": [
+    "calls_nan_30d",
+    "null_score",
+    "rn"
+  ],
+  "notes": {
+    "feature_hygiene": "model_features must not be changed without retraining. ui_features_for_form is safe to change for Streamlit display."
+  }
 }
