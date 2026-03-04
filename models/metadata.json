@@ -1,10 +1,14 @@
 {
-  "trained_at": "2026-03-04T06:29:15.609140",
+  "trained_at": "2026-03-04T12:54:44.053840",
   "model_name": "HistGradientBoostingClassifier",
   "lookback_days": 30,
   "horizon_days": 30,
-  "val_roc_auc": 0.9185732510129523,
-  "val_pr_auc": 0.40219219735995887,
+  "val_roc_auc_lr": 0.9014161857206539,
+  "val_pr_auc_lr": 0.34753795173407714,
+  "val_roc_auc_hgb": 0.9181142755964318,
+  "val_pr_auc_hgb": 0.4012745052695745,
+  "test_roc_auc": 0.9096488069997651,
+  "test_pr_auc": 0.29714652720346174,
   "features": [
     "contract_status",
     "contract_dd_cancels",
@@ -19,14 +23,18 @@
     "calls_30d",
     "avg_talk_time_30d",
     "avg_hold_time_30d",
-    "loyalty_calls_30d",
-    "tech_calls_30d",
-    "billing_calls_30d",
-    "unknown_calls_30d",
+    "calls_Tech_30d",
+    "calls_CSandB_30d",
+    "calls_Loyalty_30d",
+    "calls_Customer_Finance_30d",
+    "calls_FTTP_30d",
+    "calls_nan_30d",
     "avg_download_30d",
     "avg_upload_30d",
     "sum_download_30d",
     "sum_upload_30d",
+    "null_score",
+    "rn",
     "log1p_sum_download_30d",
     "log1p_sum_upload_30d",
     "log1p_avg_talk_time_30d",
@@ -48,35 +56,272 @@
     "calls_30d",
     "avg_talk_time_30d",
     "avg_hold_time_30d",
-    "loyalty_calls_30d",
-    "tech_calls_30d",
-    "billing_calls_30d",
-    "unknown_calls_30d",
+    "calls_Tech_30d",
+    "calls_CSandB_30d",
+    "calls_Loyalty_30d",
+    "calls_Customer_Finance_30d",
+    "calls_FTTP_30d",
+    "calls_nan_30d",
     "avg_download_30d",
     "avg_upload_30d",
     "sum_download_30d",
     "sum_upload_30d",
+    "null_score",
+    "rn",
     "log1p_sum_download_30d",
     "log1p_sum_upload_30d",
     "log1p_avg_talk_time_30d",
     "log1p_avg_hold_time_30d"
+  ],
+  "categorical_levels": {
+    "contract_status": [
+      "Unknown",
+      "02 In Contract",
+      "06 OOC",
+      "03 Soon to be OOC",
+      "01 Early Contract",
+      "05 Newly OOC",
+      "04 Coming OOC"
+    ],
+    "technology": [
+      "Unknown",
+      "FTTC",
+      "MPF",
+      "GFAST",
+      "FTTP"
+    ],
+    "sales_channel": [
+      "Online - Affiliate",
+      "Migrated Customer",
+      "Inbound",
+      "Unknown",
+      "Partners",
+      "Online - Search",
+      "Retail",
+      "Online - Ambient",
+      "Webchat",
+      "Field",
+      "Online - Other",
+      "Outbound",
+      "Other"
+    ],
+    "crm_package_name": [
+      "Unknown",
+      "Fibre 65 (FTTC-OR)",
+      "Fibre 35 (FTTC-OR)",
+      "Faster Fibre",
+      "Fast Broadband",
+      "Fibre 150 (GFast-OR)",
+      "Broadband Only (SMPF)",
+      "BB (SMPF)",
+      "Fibre 250 (GFast-OR)",
+      "SimplyBroadband",
+      "TalkTalk Essentials",
+      "Plus TV Access Everything",
+      "Talk UK Anytime LR",
+      "Essentials TV Access Everything with Fibre",
+      "Essentials TV Access Everything",
+      "Talk UK Weekend CPS",
+      "Ultra Fibre Optic",
+      "Plus TV Access Everything with Fibre",
+      "SimplyBroadband with Fibre",
+      "Fibre 150 VoIP (FTTP-CF)",
+      "MPF Anytime Voice Only - Talk UK Anytime",
+      "TalkTalk Plus",
+      "Fibre 65 VoIP (FTTP-OR)",
+      "Essentials with Fibre",
+      "Talk UK Weekend LR",
+      "BB (SMPF High)",
+      "Fibre 65 VoIP (FTTP-CF)",
+      "Broadband & Calls (SMPF + CPS)",
+      "BB with calls (SMPF retain MRC)",
+      "Fibre 150 VoIP (FTTP-OR)",
+      "Talk UK Anytime - LR",
+      "Talk UK Anytime CPS",
+      "Plus TV On Demand",
+      "BB with calls (SMPF)",
+      "Essentials TV On Demand",
+      "TalkTalk SMPF BB & CPS",
+      "MPF Weekend Voice Only - Talk UK Weekend",
+      "Plus with Fibre",
+      "Talk UK Anytime - CPS",
+      "Essentials SMPF",
+      "BB with calls (SMPF High)",
+      "Fibre 500 VoIP (FTTP-OR)",
+      "Fast Broadband Extra",
+      "Talk (CPS)",
+      "Broadband & LR (SMPF + WLR)",
+      "Broadband & TV (SMPF + TV)",
+      "Talk3 CPS",
+      "BB with calls (IPS High)",
+      "Ultra Fibre Optic Broadband",
+      "Broadband Only (IPS)",
+      "Fibre 900 VoIP (FTTP-CF)"
+    ]
+  },
+  "feature_importance": {
+    "ooc_days": 0.13485798569814406,
+    "contract_dd_cancels": 0.07716020059245605,
+    "dd_cancel_60_day": 0.04707921972299679,
+    "line_speed": 0.038901957796071876,
+    "tenure_days": 0.03443523115394896,
+    "speed": 0.028198464287782953,
+    "avg_download_30d": 0.018768042624548877,
+    "calls_Loyalty_30d": 0.015124674826282459,
+    "sum_download_30d": 0.014814583452480967,
+    "avg_upload_30d": 0.013191639636375064,
+    "sales_channel": 0.012890368970746002,
+    "calls_30d": 0.007705408266506097,
+    "avg_talk_time_30d": 0.00624981561330481,
+    "sum_upload_30d": 0.006064468008234181,
+    "contract_status": 0.005763696616669922,
+    "calls_Tech_30d": 0.0015811930888191994,
+    "avg_hold_time_30d": 0.001540366898648704,
+    "technology": 0.0011174497581304843,
+    "crm_package_name": 0.0007988001459643512,
+    "calls_FTTP_30d": 0.00019311207562396903,
+    "calls_Customer_Finance_30d": 0.00014233645494635683,
+    "calls_CSandB_30d": 0.0001146468503930187,
+    "log1p_avg_talk_time_30d": 2.202975472330726e-05,
+    "rn": 0.0,
+    "null_score": 0.0,
+    "log1p_sum_upload_30d": 0.0,
+    "log1p_sum_download_30d": 0.0,
+    "log1p_avg_hold_time_30d": 0.0,
+    "calls_nan_30d": -0.0003243219175955936
+  },
+  "top_features_for_ui": [
+    "ooc_days",
+    "contract_dd_cancels",
+    "dd_cancel_60_day",
+    "line_speed",
+    "tenure_days",
+    "speed",
+    "avg_download_30d",
+    "calls_Loyalty_30d",
+    "sum_download_30d",
+    "avg_upload_30d",
+    "sales_channel",
+    "calls_30d"
+  ],
+  "top_call_types": [
+    "Tech",
+    "CS&B",
+    "Loyalty",
+    "Customer Finance",
+    "FTTP",
+    "nan"
   ],
   "risk_band_policy": {
     "high_top_pct": 0.05,
     "medium_top_pct": 0.2
   },
   "band_thresholds_from_val": {
-    "q_high": 0.867489410652155,
-    "q_medium": 0.31064582137853425
+    "q_high": 0.8692974452427101,
+    "q_medium": 0.3129284470076412
   },
   "business_kpis_val": {
     "call_list_size": 14850,
-    "precision": 0.44222222222222224,
-    "recall": 0.46846911114281636
+    "precision": 0.44074074074074077,
+    "recall": 0.466899700385219
   },
   "business_kpis_test": {
-    "call_list_size": 13171,
-    "precision": 0.3165287373775719,
-    "recall": 0.4645125348189415
-  }
+    "call_list_size": 13177,
+    "precision": 0.3159292706989451,
+    "recall": 0.4638440111420613
+  },
+  "decile_lift_val_top_decile": 7.0921188422051165,
+  "decile_lift_test_top_decile": 7.068982812225275,
+  "band_summary_val": [
+    {
+      "risk_band": "High",
+      "n_customers": 14850,
+      "avg_score": 0.9334333298089033,
+      "cease_rate": 0.44074074074074077
+    },
+    {
+      "risk_band": "Medium",
+      "n_customers": 44547,
+      "avg_score": 0.5860344476308932,
+      "cease_rate": 0.1297954968909242
+    },
+    {
+      "risk_band": "Low",
+      "n_customers": 237585,
+      "avg_score": 0.09786179884587397,
+      "cease_rate": 0.00711745270113854
+    }
+  ],
+  "band_summary_test": [
+    {
+      "risk_band": "High",
+      "n_customers": 13177,
+      "avg_score": 0.933382352107366,
+      "cease_rate": 0.3159292706989451
+    },
+    {
+      "risk_band": "Medium",
+      "n_customers": 37647,
+      "avg_score": 0.5850313617217151,
+      "cease_rate": 0.09522671129173639
+    },
+    {
+      "risk_band": "Low",
+      "n_customers": 210913,
+      "avg_score": 0.09974722160564294,
+      "cease_rate": 0.005817564588242546
+    }
+  ],
+  "kpis_table_val": [
+    {
+      "risk_band": "High",
+      "n_customers": 14850,
+      "cease_rate": 0.44074074074074077,
+      "ceases": 6545,
+      "lift": 9.337428068673612,
+      "capture": 0.466899700385219
+    },
+    {
+      "risk_band": "Medium",
+      "n_customers": 44547,
+      "cease_rate": 0.1297954968909242,
+      "ceases": 5782,
+      "lift": 2.749816397322047,
+      "capture": 0.4124696818376373
+    },
+    {
+      "risk_band": "Low",
+      "n_customers": 237585,
+      "cease_rate": 0.00711745270113854,
+      "ceases": 1691,
+      "lift": 0.15078865302393538,
+      "capture": 0.12063061777714368
+    }
+  ],
+  "kpis_table_test": [
+    {
+      "risk_band": "High",
+      "n_customers": 13177,
+      "cease_rate": 0.3159292706989451,
+      "ceases": 4163,
+      "lift": 9.21341276043786,
+      "capture": 0.4638440111420613
+    },
+    {
+      "risk_band": "Medium",
+      "n_customers": 37647,
+      "cease_rate": 0.09522671129173639,
+      "ceases": 3585,
+      "lift": 2.7770867669487695,
+      "capture": 0.39944289693593316
+    },
+    {
+      "risk_band": "Low",
+      "n_customers": 210913,
+      "cease_rate": 0.005817564588242546,
+      "ceases": 1227,
+      "lift": 0.16965703650505173,
+      "capture": 0.13671309192200556
+    }
+  ]
 }
